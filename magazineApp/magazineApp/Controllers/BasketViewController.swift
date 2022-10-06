@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - BasketViewController
-
 /// Страница выбранных товаров пользователем
 class BasketViewController: UIViewController {
 
@@ -16,7 +14,6 @@ class BasketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
 }

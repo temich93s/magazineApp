@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - ForYouViewController
-
 /// Страница со списком товара для пользователя
 class ForYouViewController: UIViewController {
 
@@ -16,7 +14,6 @@ class ForYouViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
 }

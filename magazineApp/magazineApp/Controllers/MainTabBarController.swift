@@ -7,21 +7,33 @@
 
 import UIKit
 
-// MARK: - MainTabBarController
-
 /// Основной таб бар приложения
 class MainTabBarController: UITabBarController {
+    
+    // MARK: - Constants
+    
+    private enum Constant {
+        static let imageLaptopComputerAndIphone = "laptopcomputer.and.iphone"
+        static let imagePersonCircle = "person.circle"
+        static let imageMagnifyingGlass = "magnifyingglass"
+        static let imageBag = "bag"
+        static let wordBuy = "Купить"
+        static let wordForYou = "Для вас"
+        static let wordSearch = "Поиск"
+        static let wordBasket = "Корзина"
+        static let unselectedItemTintColor = UIColor.gray
+    }
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTabBar()
+        setupTabBar()
     }
     
     // MARK: - Private Methods
     
-    private func setTabBar() {
+    private func setupTabBar() {
         let buyViewController = BuyViewController()
         buyViewController.tabBarItem.title = Constant.wordBuy
         buyViewController.tabBarItem.image = UIImage(systemName: Constant.imageLaptopComputerAndIphone)
@@ -38,21 +50,19 @@ class MainTabBarController: UITabBarController {
         basketViewController.tabBarItem.title = Constant.wordBasket
         basketViewController.tabBarItem.image = UIImage(systemName: Constant.imageBag)
         
+        let navigationControllerBuy = UINavigationController(rootViewController: buyViewController)
+        let navigationControllerForYou = UINavigationController(rootViewController: forYouViewController)
+        let navigationControllerSearch = UINavigationController(rootViewController: searchViewController)
+        let navigationControllerBasket = UINavigationController(rootViewController: basketViewController)
+        
         tabBar.unselectedItemTintColor = Constant.unselectedItemTintColor
-        viewControllers = [buyViewController, forYouViewController, searchViewController, basketViewController]
+        
+        viewControllers = [
+            navigationControllerBuy,
+            navigationControllerForYou,
+            navigationControllerSearch,
+            navigationControllerBasket
+        ]
     }
     
-    // MARK: - Constants
-    
-    private enum Constant {
-        static let imageLaptopComputerAndIphone = "laptopcomputer.and.iphone"
-        static let imagePersonCircle = "person.circle"
-        static let imageMagnifyingGlass = "magnifyingglass"
-        static let imageBag = "bag"
-        static let wordBuy = "Купить"
-        static let wordForYou = "Для вас"
-        static let wordSearch = "Поиск"
-        static let wordBasket = "Корзина"
-        static let unselectedItemTintColor = UIColor.gray
-    }
 }

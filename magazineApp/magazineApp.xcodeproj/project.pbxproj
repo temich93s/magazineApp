@@ -18,6 +18,7 @@
 		AAADAB0928EDB3D30055DA73 /* ForYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAB0828EDB3D30055DA73 /* ForYouViewController.swift */; };
 		AAADAB0B28EDB3EA0055DA73 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAB0A28EDB3EA0055DA73 /* SearchViewController.swift */; };
 		AAADAB0D28EDB41E0055DA73 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAB0C28EDB41E0055DA73 /* BasketViewController.swift */; };
+		AAFE7CEE28EEECAF00704603 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE7CED28EEECAF00704603 /* ProductViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		AAADAB0828EDB3D30055DA73 /* ForYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouViewController.swift; sourceTree = "<group>"; };
 		AAADAB0A28EDB3EA0055DA73 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AAADAB0C28EDB41E0055DA73 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		AAFE7CED28EEECAF00704603 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				AAADAB0828EDB3D30055DA73 /* ForYouViewController.swift */,
 				AAADAB0A28EDB3EA0055DA73 /* SearchViewController.swift */,
 				AAADAB0C28EDB41E0055DA73 /* BasketViewController.swift */,
+				AAFE7CED28EEECAF00704603 /* ProductViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				AAADAB0928EDB3D30055DA73 /* ForYouViewController.swift in Sources */,
 				AAADAB0528EDB2920055DA73 /* MainTabBarController.swift in Sources */,
 				AAADAAEA28EDAE280055DA73 /* AppDelegate.swift in Sources */,
+				AAFE7CEE28EEECAF00704603 /* ProductViewController.swift in Sources */,
 				AAADAB0D28EDB41E0055DA73 /* BasketViewController.swift in Sources */,
 				AAADAAEC28EDAE280055DA73 /* SceneDelegate.swift in Sources */,
 			);

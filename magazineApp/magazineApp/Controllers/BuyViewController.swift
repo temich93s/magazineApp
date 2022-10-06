@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - BuyViewController
-
 /// Страница с общим списком товара
 class BuyViewController: UIViewController {
 
@@ -16,7 +14,6 @@ class BuyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
 }
