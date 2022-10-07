@@ -14,7 +14,6 @@ final class ProductViewController: UIViewController {
     
     private enum Constant {
         static let fontSizeWordSearch: CGFloat = 40
-        static let blackColor = UIColor.black
     }
     
     // MARK: - Public Properties
@@ -48,7 +47,7 @@ final class ProductViewController: UIViewController {
     // MARK: - Private Methods
     
     private func setupUI() {
-        view.backgroundColor = Constant.blackColor
+        view.backgroundColor = .black
         setupProductImageView()
         setupProductTextLabel()
     }
