@@ -8,13 +8,12 @@
 import UIKit
 
 /// Страница с выбранным пользователем товаром
-class ProductViewController: UIViewController {
+final class ProductViewController: UIViewController {
 
     // MARK: - Constants
     
     private enum Constant {
         static let fontSizeWordSearch: CGFloat = 40
-        static let whiteColor = UIColor.white
         static let blackColor = UIColor.black
     }
     
@@ -22,10 +21,10 @@ class ProductViewController: UIViewController {
     
     var (productImage, productText) = ("", "")
     
-    // MARK: - Private Properties
+    // MARK: - Private Visual Components
     
     private lazy var productTextLabel: UILabel = {
-        $0.textColor = Constant.whiteColor
+        $0.textColor = .white
         $0.text = productText
         $0.numberOfLines = 0
         $0.textAlignment = .center

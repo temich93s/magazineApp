@@ -8,7 +8,7 @@
 import UIKit
 
 /// Страница выбранных товаров пользователем
-class BasketViewController: UIViewController {
+final class BasketViewController: UIViewController {
 
     // MARK: - Lifecycle
     

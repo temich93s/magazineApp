@@ -8,7 +8,7 @@
 import UIKit
 
 /// Страница со списком товара для пользователя
-class ForYouViewController: UIViewController {
+final class ForYouViewController: UIViewController {
 
     // MARK: - Lifecycle
     

@@ -8,7 +8,7 @@
 import UIKit
 
 /// Страница с поиском товара
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
 
     // MARK: - Constants
     
@@ -35,45 +35,41 @@ class SearchViewController: UIViewController {
         static let wordAppleCare = "  AppleCare"
         static let wordBeats = "  Beats"
         static let wordCompareModelIphone = "  Сравните модели iphone"
-        static let whiteColor = UIColor.white
-        static let darkGrayColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1)
-        static let lightGrayColor = UIColor.lightGray
-        static let systemBlueColor = UIColor.systemBlue
     }
     
-    // MARK: - Private Properties
+    // MARK: - Private Visual Components
     
     private let searchLabel: UILabel = {
-        $0.textColor = Constant.whiteColor
+        $0.textColor = .white
         $0.text = Constant.wordSearch
         $0.font = UIFont.boldSystemFont(ofSize: Constant.fontSizeWordSearch)
         return $0
     }(UILabel())
     
     private let backgroundForSearchView: UIView = {
-        $0.backgroundColor = Constant.darkGrayColor
+        $0.backgroundColor = UIColor(named: "HexColor1C1C1E")
         $0.isUserInteractionEnabled = false
         return $0
     }(UIView())
     
     private let searchButton: UIButton = {
         $0.setImage(UIImage(systemName: Constant.imageMagnifyingGlass), for: .normal)
-        $0.tintColor = Constant.lightGrayColor
+        $0.tintColor = .lightGray
         return $0
     }(UIButton())
     
     private let searchTextField: UITextField = {
-        $0.textColor = Constant.lightGrayColor
+        $0.textColor = .lightGray
         $0.attributedPlaceholder = NSAttributedString(
             string: Constant.placeholderForSearch,
-            attributes: [NSAttributedString.Key.foregroundColor: Constant.lightGrayColor]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
         $0.placeholder = Constant.placeholderForSearch
         return $0
     }(UITextField())
     
     private let recentlyViewedLabel: UILabel = {
-        $0.textColor = Constant.whiteColor
+        $0.textColor = .white
         $0.text = Constant.wordRecentlyViewed
         $0.font = UIFont.boldSystemFont(ofSize: Constant.fontSizeforBoldWord)
         return $0
@@ -81,91 +77,24 @@ class SearchViewController: UIViewController {
     
     private let clearButton: UIButton = {
         $0.setTitle(Constant.wordClear, for: .normal)
-        $0.setTitleColor(Constant.systemBlueColor, for: .normal)
+        $0.setTitleColor(.systemBlue, for: .normal)
         return $0
     }(UIButton())
     
     private let queryOptionsLabel: UILabel = {
-        $0.textColor = Constant.whiteColor
+        $0.textColor = .white
         $0.text = Constant.wordQueryOptions
         $0.font = UIFont.boldSystemFont(ofSize: Constant.fontSizeforBoldWord)
         return $0
     }(UILabel())
     
-    private let backgroundForProductsCaseBlackView: UIView = {
-        $0.backgroundColor = Constant.darkGrayColor
-        $0.isUserInteractionEnabled = false
-        return $0
-    }(UIView())
+    // MARK: - Private Properties
     
-    private lazy var productCaseBlackImageView: UIImageView = {
-        $0.image = UIImage(named: Constant.imageCaseBlack)
-        $0.contentMode = .scaleAspectFit
-        $0.addGestureRecognizer(UITapGestureRecognizer(
-            target: self,
-            action: #selector(goToProductViewControllerFromCaseBlack)
-        ))
-        $0.isUserInteractionEnabled = true
-        return $0
-    }(UIImageView())
-    
-    private let productCaseBlackNameLabel: UILabel = {
-        $0.textColor = Constant.whiteColor
-        $0.text = Constant.descriptionCaseBlack
-        $0.numberOfLines = Constant.numberZero
-        $0.font = UIFont.systemFont(ofSize: Constant.fontSizeforCommonWord)
-        return $0
-    }(UILabel())
-
-    private let backgroundForProductsBlackUnityView: UIView = {
-        $0.backgroundColor = Constant.darkGrayColor
-        $0.isUserInteractionEnabled = false
-        return $0
-    }(UIView())
-    
-    private lazy var productBlackUnityImageView: UIImageView = {
-        $0.image = UIImage(named: Constant.imageBlackUnity)
-        $0.contentMode = .scaleAspectFit
-        $0.addGestureRecognizer(UITapGestureRecognizer(
-            target: self,
-            action: #selector(goToProductViewControllerFromBlackUnity)
-        ))
-        $0.isUserInteractionEnabled = true
-        return $0
-    }(UIImageView())
-    
-    private let productBlackUnityNameLabel: UILabel = {
-        $0.textColor = Constant.whiteColor
-        $0.text = Constant.descriptionBlackUnity
-        $0.numberOfLines = Constant.numberZero
-        $0.font = UIFont.systemFont(ofSize: Constant.fontSizeforCommonWord)
-        return $0
-    }(UILabel())
-    
-    private let backgroundForProductsCaseBrownView: UIView = {
-        $0.backgroundColor = Constant.darkGrayColor
-        $0.isUserInteractionEnabled = false
-        return $0
-    }(UIView())
-    
-    private lazy var productCaseBrownImageView: UIImageView = {
-        $0.image = UIImage(named: Constant.imageCaseBrown)
-        $0.contentMode = .scaleAspectFit
-        $0.addGestureRecognizer(UITapGestureRecognizer(
-            target: self,
-            action: #selector(goToProductViewControllerFromCaseBrown)
-        ))
-        $0.isUserInteractionEnabled = true
-        return $0
-    }(UIImageView())
-    
-    private let productCaseBrownNameLabel: UILabel = {
-        $0.textColor = Constant.whiteColor
-        $0.text = Constant.descriptionCaseBrown
-        $0.numberOfLines = Constant.numberZero
-        $0.font = UIFont.systemFont(ofSize: Constant.fontSizeforCommonWord)
-        return $0
-    }(UILabel())
+    private let products = [
+        (productText: Constant.descriptionCaseBlack, productImage: Constant.imageCaseBlack),
+        (productText: Constant.descriptionBlackUnity, productImage: Constant.imageBlackUnity),
+        (productText: Constant.descriptionCaseBrown, productImage: Constant.imageCaseBrown)
+    ]
     
     private let lastQueryArray = [
         Constant.wordAirPods,
@@ -184,24 +113,14 @@ class SearchViewController: UIViewController {
     
     // MARK: - Private Methods
     
-    @objc private func goToProductViewControllerFromCaseBlack(sender: UIView) {
+    @objc private func goToProductViewController(sender: UITapGestureRecognizer) {
+        guard
+            let tag = sender.view?.tag,
+            tag < products.count
+        else { return }
         let productViewController = ProductViewController()
-        productViewController.productText = Constant.descriptionCaseBlack
-        productViewController.productImage = Constant.imageCaseBlack
-        navigationController?.pushViewController(productViewController, animated: true)
-    }
-    
-    @objc private func goToProductViewControllerFromBlackUnity(sender: UIView) {
-        let productViewController = ProductViewController()
-        productViewController.productText = Constant.descriptionBlackUnity
-        productViewController.productImage = Constant.imageBlackUnity
-        navigationController?.pushViewController(productViewController, animated: true)
-    }
-    
-    @objc private func goToProductViewControllerFromCaseBrown(sender: UIView) {
-        let productViewController = ProductViewController()
-        productViewController.productText = Constant.descriptionCaseBrown
-        productViewController.productImage = Constant.imageCaseBrown
+        productViewController.productText = products[tag].productText
+        productViewController.productImage = products[tag].productImage
         navigationController?.pushViewController(productViewController, animated: true)
     }
     
@@ -216,16 +135,14 @@ class SearchViewController: UIViewController {
         setupSearchTextField()
         setupRecentlyViewedLabel()
         setupClearButton()
-        setupBackgroundForProductsCaseBlackView()
-        setupProductCaseBlackImageView()
-        setupProductCaseBlackNameLabel()
-        setupBackgroundForProductsBlackUnityView()
-        setupProductBlackUnityImageView()
-        setupProductBlackUnityNameLabel()
-        setupBackgroundForProductsCaseBrownView()
-        setupProductCaseBrownImageView()
-        setupProductCaseBrownNameLabel()
         setupQueryOptionsLabel()
+        for indexProduct in 0..<products.count {
+            createProductView(
+                productText: products[indexProduct].productText,
+                productImage: products[indexProduct].productImage,
+                index: indexProduct
+            )
+        }
         for indexLastQuery in 0..<lastQueryArray.count {
             createLastQueryView(lastQueryText: lastQueryArray[indexLastQuery], index: indexLastQuery)
         }
@@ -278,102 +195,6 @@ class SearchViewController: UIViewController {
             height: 40
         )
     }
-    
-    private func setupBackgroundForProductsCaseBlackView() {
-        view.addSubview(backgroundForProductsCaseBlackView)
-        backgroundForProductsCaseBlackView.frame = CGRect(
-            x: 20,
-            y: recentlyViewedLabel.frame.maxY + 10,
-            width: 150,
-            height: 210
-        )
-        backgroundForProductsCaseBlackView.layer.cornerRadius = backgroundForProductsCaseBlackView.frame.height
-            / Constant.numberForCornerRadius
-    }
-    
-    private func setupProductCaseBlackImageView() {
-        view.addSubview(productCaseBlackImageView)
-        productCaseBlackImageView.frame = CGRect(
-            x: 35,
-            y: recentlyViewedLabel.frame.maxY + 20,
-            width: 120,
-            height: 120
-        )
-    }
-    
-    private func setupProductCaseBlackNameLabel() {
-        view.addSubview(productCaseBlackNameLabel)
-        productCaseBlackNameLabel.frame = CGRect(
-            x: 30,
-            y: recentlyViewedLabel.frame.maxY + 150,
-            width: 130,
-            height: 60
-        )
-    }
-    
-    private func setupBackgroundForProductsBlackUnityView() {
-        view.addSubview(backgroundForProductsBlackUnityView)
-        backgroundForProductsBlackUnityView.frame = CGRect(
-            x: 180,
-            y: recentlyViewedLabel.frame.maxY + 10,
-            width: 150,
-            height: 210
-        )
-        backgroundForProductsBlackUnityView.layer.cornerRadius = backgroundForProductsBlackUnityView.frame.height
-            / Constant.numberForCornerRadius
-    }
-    
-    private func setupProductBlackUnityImageView() {
-        view.addSubview(productBlackUnityImageView)
-        productBlackUnityImageView.frame = CGRect(
-            x: 195,
-            y: recentlyViewedLabel.frame.maxY + 20,
-            width: 120,
-            height: 120
-        )
-    }
-    
-    private func setupProductBlackUnityNameLabel() {
-        view.addSubview(productBlackUnityNameLabel)
-        productBlackUnityNameLabel.frame = CGRect(
-            x: 190,
-            y: recentlyViewedLabel.frame.maxY + 150,
-            width: 130,
-            height: 60
-        )
-    }
-    
-    private func setupBackgroundForProductsCaseBrownView() {
-        view.addSubview(backgroundForProductsCaseBrownView)
-        backgroundForProductsCaseBrownView.frame = CGRect(
-            x: 340,
-            y: recentlyViewedLabel.frame.maxY + 10,
-            width: 150,
-            height: 210
-        )
-        backgroundForProductsCaseBrownView.layer.cornerRadius = backgroundForProductsCaseBrownView.frame.height
-            / Constant.numberForCornerRadius
-    }
-    
-    private func setupProductCaseBrownImageView() {
-        view.addSubview(productCaseBrownImageView)
-        productCaseBrownImageView.frame = CGRect(
-            x: 355,
-            y: recentlyViewedLabel.frame.maxY + 20,
-            width: 120,
-            height: 120
-        )
-    }
-    
-    private func setupProductCaseBrownNameLabel() {
-        view.addSubview(productCaseBrownNameLabel)
-        productCaseBrownNameLabel.frame = CGRect(
-            x: 350,
-            y: recentlyViewedLabel.frame.maxY + 150,
-            width: 130,
-            height: 60
-        )
-    }
  
     private func setupQueryOptionsLabel() {
         view.addSubview(queryOptionsLabel)
@@ -385,23 +206,90 @@ class SearchViewController: UIViewController {
         )
     }
     
+    private func createProductView(productText: String, productImage: String, index: Int) {
+        
+        let backgroundForProductsView: UIView = {
+            $0.backgroundColor = UIColor(named: "HexColor1C1C1E")
+            $0.isUserInteractionEnabled = false
+            return $0
+        }(UIView())
+        
+        let productImageView: UIImageView = {
+            $0.image = UIImage(named: productImage)
+            $0.contentMode = .scaleAspectFit
+            $0.tag = index
+            $0.addGestureRecognizer(UITapGestureRecognizer(
+                target: self,
+                action: #selector(goToProductViewController)
+            ))
+            $0.isUserInteractionEnabled = true
+            return $0
+        }(UIImageView())
+        
+        let productNameLabel: UILabel = {
+            $0.textColor = .white
+            $0.text = productText
+            $0.numberOfLines = Constant.numberZero
+            $0.font = UIFont.systemFont(ofSize: Constant.fontSizeforCommonWord)
+            return $0
+        }(UILabel())
+        
+        view.addSubview(backgroundForProductsView)
+        backgroundForProductsView.frame = CGRect(
+            x: 20 + (CGFloat(index) * 160),
+            y: recentlyViewedLabel.frame.maxY + 10,
+            width: 150,
+            height: 210
+        )
+        backgroundForProductsView.layer.cornerRadius = backgroundForProductsView.frame.height
+        / Constant.numberForCornerRadius
+        
+        view.addSubview(productImageView)
+        productImageView.frame = CGRect(
+            x: 35 + (CGFloat(index) * 160),
+            y: recentlyViewedLabel.frame.maxY + 20,
+            width: 120,
+            height: 120
+        )
+        
+        view.addSubview(productNameLabel)
+        productNameLabel.frame = CGRect(
+            x: 30 + (CGFloat(index) * 160),
+            y: recentlyViewedLabel.frame.maxY + 150,
+            width: 130,
+            height: 60
+        )
+    }
+    
     private func createLastQueryView(lastQueryText: String, index: Int) {
         let lastQueryButton: UIButton = {
             $0.setImage(UIImage(systemName: Constant.imageMagnifyingGlass), for: .normal)
-            $0.tintColor = Constant.lightGrayColor
+            $0.tintColor = .lightGray
             $0.titleLabel?.font = UIFont.systemFont(ofSize: Constant.fontSizeforBoldWord)
             $0.setTitle(lastQueryText, for: .normal)
             $0.contentHorizontalAlignment = .left
             return $0
         }(UIButton())
         
+        let lineView: UIView = {
+            $0.backgroundColor = UIColor(named: "HexColor1C1C1E")
+            return $0
+        }(UIButton())
+        
         view.addSubview(lastQueryButton)
+        view.addSubview(lineView)
         
         lastQueryButton.frame = CGRect(
             x: 30,
             y: recentlyViewedLabel.frame.maxY + 300 + (CGFloat(index) * 50),
             width: view.bounds.width - 60,
             height: 40
+        )
+        lineView.frame = CGRect(
+            x: 30,
+            y: recentlyViewedLabel.frame.maxY + 345 + (CGFloat(index) * 50),
+            width: view.bounds.width - 60,
+            height: 1
         )
     }
 }

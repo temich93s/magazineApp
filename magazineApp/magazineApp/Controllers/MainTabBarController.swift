@@ -8,7 +8,7 @@
 import UIKit
 
 /// Основной таб бар приложения
-class MainTabBarController: UITabBarController {
+final class MainTabBarController: UITabBarController {
     
     // MARK: - Constants
     
@@ -21,7 +21,6 @@ class MainTabBarController: UITabBarController {
         static let wordForYou = "Для вас"
         static let wordSearch = "Поиск"
         static let wordBasket = "Корзина"
-        static let unselectedItemTintColor = UIColor.gray
     }
     
     // MARK: - Lifecycle
@@ -55,7 +54,8 @@ class MainTabBarController: UITabBarController {
         let navigationControllerSearch = UINavigationController(rootViewController: searchViewController)
         let navigationControllerBasket = UINavigationController(rootViewController: basketViewController)
         
-        tabBar.unselectedItemTintColor = Constant.unselectedItemTintColor
+        tabBar.unselectedItemTintColor = .gray
+        tabBar.backgroundColor = UIColor(named: "HexColor121212")
         
         viewControllers = [
             navigationControllerBuy,

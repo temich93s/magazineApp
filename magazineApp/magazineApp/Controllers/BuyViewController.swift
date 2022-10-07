@@ -8,7 +8,7 @@
 import UIKit
 
 /// Страница с общим списком товара
-class BuyViewController: UIViewController {
+final class BuyViewController: UIViewController {
 
     // MARK: - Lifecycle
     
