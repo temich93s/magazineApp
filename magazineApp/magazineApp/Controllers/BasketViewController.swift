@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BasketViewController.swift
 //  magazineApp
 //
 //  Created by 2lup on 05.10.2022.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-/// ViewController
-class ViewController: UIViewController {
+/// Страница выбранных товаров пользователем
+final class BasketViewController: UIViewController {
 
     // MARK: - Lifecycle
     
