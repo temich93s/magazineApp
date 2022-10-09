@@ -18,7 +18,7 @@ final class SearchViewController: UIViewController {
         static let fontSizeforCommonWord: CGFloat = 15
         static let numberFour: CGFloat = 4
         static let numberForCornerRadius: CGFloat = 20
-        static let numberZero = 0
+        static let numberThree = 3
         static let wordSearch = "Поиск"
         static let wordRecentlyViewed = "Недавно просмотренные"
         static let wordClear = "Очистить"
@@ -26,15 +26,25 @@ final class SearchViewController: UIViewController {
         static let imageMagnifyingGlass = "magnifyingglass"
         static let placeholderForSearch = "Поиск по продуктам и магазинам"
         static let descriptionCaseBlack = "Чехол Incase Flat для MacBook Pro 16 дюймов"
-        static let imageCaseBlack = "CaseBlack"
+        static let imageCaseBlackFirst = "CaseBlack1"
+        static let imageCaseBlackSecond = "CaseBlack2"
+        static let imageCaseBlackThird = "CaseBlack3"
         static let descriptionBlackUnity = "Спортивный ремешок Black Unity"
-        static let imageBlackUnity = "BlackUnity"
+        static let imageBlackUnityFirst = "BlackUnity1"
+        static let imageBlackUnitySecond = "BlackUnity2"
         static let descriptionCaseBrown = "Кожанный чехол Brown для MacBook Pro 16 дюймов"
-        static let imageCaseBrown = "CaseBrown"
+        static let imageIPhone12First = "IPhone121"
+        static let imageIPhone12Second = "IPhone122"
+        static let imageIPhone12Third = "IPhone123"
+        static let descriptionIPhone12 = "IPhone 12 Pro"
+        static let imageCaseBrownFirst = "CaseBrown1"
+        static let imageCaseBrownSecond = "CaseBrown2"
+        static let imageCaseBrownThird = "CaseBrown3"
         static let wordAirPods = "  AirPods"
         static let wordAppleCare = "  AppleCare"
         static let wordBeats = "  Beats"
         static let wordCompareModelIphone = "  Сравните модели iphone"
+        static let colorBackgroundView = "HexColor1C1C1E"
     }
     
     // MARK: - Private Visual Components
@@ -47,7 +57,7 @@ final class SearchViewController: UIViewController {
     }(UILabel())
     
     private let backgroundForSearchView: UIView = {
-        $0.backgroundColor = UIColor(named: "HexColor1C1C1E")
+        $0.backgroundColor = UIColor(named: Constant.colorBackgroundView)
         $0.isUserInteractionEnabled = false
         return $0
     }(UIView())
@@ -88,12 +98,19 @@ final class SearchViewController: UIViewController {
         return $0
     }(UILabel())
     
+    private let productsScrollView = UIScrollView()
+    
     // MARK: - Private Properties
     
     private let products = [
-        (productText: Constant.descriptionCaseBlack, productImage: Constant.imageCaseBlack),
-        (productText: Constant.descriptionBlackUnity, productImage: Constant.imageBlackUnity),
-        (productText: Constant.descriptionCaseBrown, productImage: Constant.imageCaseBrown)
+        (productText: Constant.descriptionCaseBlack,
+         productImage: [Constant.imageCaseBlackFirst, Constant.imageCaseBlackSecond, Constant.imageCaseBlackThird]),
+        (productText: Constant.descriptionBlackUnity,
+         productImage: [Constant.imageBlackUnityFirst, Constant.imageBlackUnitySecond]),
+        (productText: Constant.descriptionCaseBrown,
+         productImage: [Constant.imageCaseBrownFirst, Constant.imageCaseBrownSecond, Constant.imageCaseBrownThird]),
+        (productText: Constant.descriptionIPhone12,
+         productImage: [Constant.imageIPhone12First, Constant.imageIPhone12Second, Constant.imageIPhone12Third])
     ]
     
     private let lastQueryArray = [
@@ -120,7 +137,7 @@ final class SearchViewController: UIViewController {
         else { return }
         let productViewController = ProductViewController()
         productViewController.productText = products[tag].productText
-        productViewController.productImage = products[tag].productImage
+        productViewController.imagesProduct = products[tag].productImage
         navigationController?.pushViewController(productViewController, animated: true)
     }
     
@@ -136,16 +153,33 @@ final class SearchViewController: UIViewController {
         setupRecentlyViewedLabel()
         setupClearButton()
         setupQueryOptionsLabel()
-        for indexProduct in 0..<products.count {
-            createProductView(
-                productText: products[indexProduct].productText,
-                productImage: products[indexProduct].productImage,
-                index: indexProduct
-            )
-        }
+        setupProductsScrollView(products: products)
         for indexLastQuery in 0..<lastQueryArray.count {
             createLastQueryView(lastQueryText: lastQueryArray[indexLastQuery], index: indexLastQuery)
         }
+        title = Constant.wordSearch
+    }
+    
+    private func setupProductsScrollView(products: [(productText: String, productImage: [String])]) {
+        for indexProduct in 0..<products.count {
+            guard let firstProductImage = products[indexProduct].productImage.first else { return }
+            let productView = createProductView(
+                productText: products[indexProduct].productText,
+                productImage: firstProductImage,
+                index: indexProduct
+            )
+            productsScrollView.addSubview(productView)
+        }
+        productsScrollView.contentSize = CGSize(width: 20 + (products.count * 150), height: 200)
+        view.addSubview(productsScrollView)
+        productsScrollView.frame = CGRect(
+            x: 20,
+            y: recentlyViewedLabel.frame.maxY + 10,
+            width: view.bounds.width,
+            height: 200
+        )
+        productsScrollView.showsHorizontalScrollIndicator = false
+        productsScrollView.showsVerticalScrollIndicator = false
     }
     
     private func setupSearchLabel() {
@@ -206,11 +240,11 @@ final class SearchViewController: UIViewController {
         )
     }
     
-    private func createProductView(productText: String, productImage: String, index: Int) {
+    private func createProductView(productText: String, productImage: String, index: Int) -> UIView {
         
         let backgroundForProductsView: UIView = {
-            $0.backgroundColor = UIColor(named: "HexColor1C1C1E")
-            $0.isUserInteractionEnabled = false
+            $0.backgroundColor = UIColor(named: Constant.colorBackgroundView)
+            $0.isUserInteractionEnabled = true
             return $0
         }(UIView())
         
@@ -229,36 +263,41 @@ final class SearchViewController: UIViewController {
         let productNameLabel: UILabel = {
             $0.textColor = .white
             $0.text = productText
-            $0.numberOfLines = Constant.numberZero
+            $0.numberOfLines = Constant.numberThree
             $0.font = UIFont.systemFont(ofSize: Constant.fontSizeforCommonWord)
+            $0.isUserInteractionEnabled = false
             return $0
         }(UILabel())
         
         view.addSubview(backgroundForProductsView)
+        
         backgroundForProductsView.frame = CGRect(
-            x: 20 + (CGFloat(index) * 160),
-            y: recentlyViewedLabel.frame.maxY + 10,
-            width: 150,
-            height: 210
+            x: CGFloat(index) * 150,
+            y: 0,
+            width: 140,
+            height: 200
         )
         backgroundForProductsView.layer.cornerRadius = backgroundForProductsView.frame.height
         / Constant.numberForCornerRadius
         
-        view.addSubview(productImageView)
+        backgroundForProductsView.addSubview(productImageView)
         productImageView.frame = CGRect(
-            x: 35 + (CGFloat(index) * 160),
-            y: recentlyViewedLabel.frame.maxY + 20,
+            x: 10,
+            y: 10,
             width: 120,
             height: 120
         )
         
-        view.addSubview(productNameLabel)
+        backgroundForProductsView.addSubview(productNameLabel)
         productNameLabel.frame = CGRect(
-            x: 30 + (CGFloat(index) * 160),
-            y: recentlyViewedLabel.frame.maxY + 150,
+            x: 10,
+            y: 130,
             width: 130,
             height: 60
         )
+        productNameLabel.sizeToFit()
+        
+        return backgroundForProductsView
     }
     
     private func createLastQueryView(lastQueryText: String, index: Int) {
@@ -272,7 +311,7 @@ final class SearchViewController: UIViewController {
         }(UIButton())
         
         let lineView: UIView = {
-            $0.backgroundColor = UIColor(named: "HexColor1C1C1E")
+            $0.backgroundColor = UIColor(named: Constant.colorBackgroundView)
             return $0
         }(UIButton())
         
