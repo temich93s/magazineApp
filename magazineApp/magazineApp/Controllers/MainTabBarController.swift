@@ -21,6 +21,9 @@ final class MainTabBarController: UITabBarController {
         static let wordForYou = "Для вас"
         static let wordSearch = "Поиск"
         static let wordBasket = "Корзина"
+        static let wordMain = "Main"
+        static let wordForYouVC = "ForYouVC"
+        static let HexColor121212 = "HexColor121212"
     }
     
     // MARK: - Lifecycle
@@ -37,7 +40,8 @@ final class MainTabBarController: UITabBarController {
         buyViewController.tabBarItem.title = Constant.wordBuy
         buyViewController.tabBarItem.image = UIImage(systemName: Constant.imageLaptopComputerAndIphone)
         
-        let forYouViewController = ForYouViewController()
+        let storyboard = UIStoryboard.init(name: Constant.wordMain, bundle: Bundle.main)
+        let forYouViewController = storyboard.instantiateViewController(identifier: Constant.wordForYouVC)
         forYouViewController.tabBarItem.title = Constant.wordForYou
         forYouViewController.tabBarItem.image = UIImage(systemName: Constant.imagePersonCircle)
         
@@ -55,7 +59,7 @@ final class MainTabBarController: UITabBarController {
         let navigationControllerBasket = UINavigationController(rootViewController: basketViewController)
         
         tabBar.unselectedItemTintColor = .gray
-        tabBar.backgroundColor = UIColor(named: "HexColor121212")
+        tabBar.backgroundColor = UIColor(named: Constant.HexColor121212)
         
         viewControllers = [
             navigationControllerBuy,

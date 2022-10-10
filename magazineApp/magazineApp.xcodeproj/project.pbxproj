@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA45295228F4639D008F0C09 /* App-Store-Price.pdf in Resources */ = {isa = PBXBuildFile; fileRef = AA45295128F4639D008F0C09 /* App-Store-Price.pdf */; };
+		AA45295528F463AE008F0C09 /* Conspect19VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45295328F463AE008F0C09 /* Conspect19VC.swift */; };
+		AA45295628F463AE008F0C09 /* Conspect20VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45295428F463AE008F0C09 /* Conspect20VC.swift */; };
+		AA45295828F463ED008F0C09 /* WebStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45295728F463ED008F0C09 /* WebStoreViewController.swift */; };
 		AAADAAEA28EDAE280055DA73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAAE928EDAE280055DA73 /* AppDelegate.swift */; };
 		AAADAAEC28EDAE280055DA73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAAEB28EDAE280055DA73 /* SceneDelegate.swift */; };
 		AAADAAF128EDAE280055DA73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAADAAEF28EDAE280055DA73 /* Main.storyboard */; };
@@ -24,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA45295128F4639D008F0C09 /* App-Store-Price.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "App-Store-Price.pdf"; sourceTree = "<group>"; };
+		AA45295328F463AE008F0C09 /* Conspect19VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conspect19VC.swift; sourceTree = "<group>"; };
+		AA45295428F463AE008F0C09 /* Conspect20VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conspect20VC.swift; sourceTree = "<group>"; };
+		AA45295728F463ED008F0C09 /* WebStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebStoreViewController.swift; sourceTree = "<group>"; };
 		AAADAAE628EDAE280055DA73 /* magazineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = magazineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAADAAE928EDAE280055DA73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAADAAEB28EDAE280055DA73 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA45295028F46388008F0C09 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA45295128F4639D008F0C09 /* App-Store-Price.pdf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		AAADAADD28EDAE280055DA73 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +88,7 @@
 		AAADAAE828EDAE280055DA73 /* magazineApp */ = {
 			isa = PBXGroup;
 			children = (
+				AA45295028F46388008F0C09 /* Resources */,
 				AAADAAFE28EDB1260055DA73 /* Conspects */,
 				AAADAAFF28EDB12D0055DA73 /* Models */,
 				AAADAB0028EDB1320055DA73 /* Views */,
@@ -91,6 +108,8 @@
 				AACCF1AD28F2DE68003735BF /* iOS+Syllabus.pdf */,
 				AAADAB0228EDB17B0055DA73 /* Conspect17VC.swift */,
 				AACCF1AF28F2DE85003735BF /* Conspect18VC.swift */,
+				AA45295328F463AE008F0C09 /* Conspect19VC.swift */,
+				AA45295428F463AE008F0C09 /* Conspect20VC.swift */,
 			);
 			path = Conspects;
 			sourceTree = "<group>";
@@ -119,6 +138,7 @@
 				AAADAB0A28EDB3EA0055DA73 /* SearchViewController.swift */,
 				AAADAB0C28EDB41E0055DA73 /* BasketViewController.swift */,
 				AAFE7CED28EEECAF00704603 /* ProductViewController.swift */,
+				AA45295728F463ED008F0C09 /* WebStoreViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -186,6 +206,7 @@
 				AACCF1AE28F2DE68003735BF /* iOS+Syllabus.pdf in Resources */,
 				AAADAAF328EDAE290055DA73 /* Assets.xcassets in Resources */,
 				AAADAAF128EDAE280055DA73 /* Main.storyboard in Resources */,
+				AA45295228F4639D008F0C09 /* App-Store-Price.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,8 +239,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAADAB0328EDB17B0055DA73 /* Conspect17VC.swift in Sources */,
+				AA45295528F463AE008F0C09 /* Conspect19VC.swift in Sources */,
 				AAADAB0B28EDB3EA0055DA73 /* SearchViewController.swift in Sources */,
+				AA45295628F463AE008F0C09 /* Conspect20VC.swift in Sources */,
 				AAADAB0728EDB3B70055DA73 /* BuyViewController.swift in Sources */,
+				AA45295828F463ED008F0C09 /* WebStoreViewController.swift in Sources */,
 				AAADAB0928EDB3D30055DA73 /* ForYouViewController.swift in Sources */,
 				AACCF1B028F2DE85003735BF /* Conspect18VC.swift in Sources */,
 				AAADAB0528EDB2920055DA73 /* MainTabBarController.swift in Sources */,
