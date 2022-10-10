@@ -113,7 +113,7 @@ final class SearchViewController: UIViewController {
          productImage: [Constant.imageIPhone12First, Constant.imageIPhone12Second, Constant.imageIPhone12Third])
     ]
     
-    private let lastQueryArray = [
+    private let lastQueries = [
         Constant.wordAirPods,
         Constant.wordAppleCare,
         Constant.wordBeats,
@@ -154,8 +154,8 @@ final class SearchViewController: UIViewController {
         setupClearButton()
         setupQueryOptionsLabel()
         setupProductsScrollView(products: products)
-        for indexLastQuery in 0..<lastQueryArray.count {
-            createLastQueryView(lastQueryText: lastQueryArray[indexLastQuery], index: indexLastQuery)
+        for indexLastQuery in 0..<lastQueries.count {
+            createLastQueryView(lastQueryText: lastQueries[indexLastQuery], index: indexLastQuery)
         }
         title = Constant.wordSearch
     }
