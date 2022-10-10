@@ -12,12 +12,14 @@
 		AAADAAF128EDAE280055DA73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAADAAEF28EDAE280055DA73 /* Main.storyboard */; };
 		AAADAAF328EDAE290055DA73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAADAAF228EDAE290055DA73 /* Assets.xcassets */; };
 		AAADAAF628EDAE290055DA73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAADAAF428EDAE290055DA73 /* LaunchScreen.storyboard */; };
-		AAADAB0328EDB17B0055DA73 /* Conspects.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAB0228EDB17B0055DA73 /* Conspects.swift */; };
+		AAADAB0328EDB17B0055DA73 /* Conspect17VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAB0228EDB17B0055DA73 /* Conspect17VC.swift */; };
 		AAADAB0528EDB2920055DA73 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAB0428EDB2920055DA73 /* MainTabBarController.swift */; };
 		AAADAB0728EDB3B70055DA73 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAB0628EDB3B70055DA73 /* BuyViewController.swift */; };
 		AAADAB0928EDB3D30055DA73 /* ForYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAB0828EDB3D30055DA73 /* ForYouViewController.swift */; };
 		AAADAB0B28EDB3EA0055DA73 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAB0A28EDB3EA0055DA73 /* SearchViewController.swift */; };
 		AAADAB0D28EDB41E0055DA73 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADAB0C28EDB41E0055DA73 /* BasketViewController.swift */; };
+		AACCF1AE28F2DE68003735BF /* iOS+Syllabus.pdf in Resources */ = {isa = PBXBuildFile; fileRef = AACCF1AD28F2DE68003735BF /* iOS+Syllabus.pdf */; };
+		AACCF1B028F2DE85003735BF /* Conspect18VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACCF1AF28F2DE85003735BF /* Conspect18VC.swift */; };
 		AAFE7CEE28EEECAF00704603 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE7CED28EEECAF00704603 /* ProductViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,12 +31,14 @@
 		AAADAAF228EDAE290055DA73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAADAAF528EDAE290055DA73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AAADAAF728EDAE290055DA73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AAADAB0228EDB17B0055DA73 /* Conspects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conspects.swift; sourceTree = "<group>"; };
+		AAADAB0228EDB17B0055DA73 /* Conspect17VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conspect17VC.swift; sourceTree = "<group>"; };
 		AAADAB0428EDB2920055DA73 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		AAADAB0628EDB3B70055DA73 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		AAADAB0828EDB3D30055DA73 /* ForYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouViewController.swift; sourceTree = "<group>"; };
 		AAADAB0A28EDB3EA0055DA73 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		AAADAB0C28EDB41E0055DA73 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		AACCF1AD28F2DE68003735BF /* iOS+Syllabus.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iOS+Syllabus.pdf"; sourceTree = "<group>"; };
+		AACCF1AF28F2DE85003735BF /* Conspect18VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conspect18VC.swift; sourceTree = "<group>"; };
 		AAFE7CED28EEECAF00704603 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,7 +88,9 @@
 		AAADAAFE28EDB1260055DA73 /* Conspects */ = {
 			isa = PBXGroup;
 			children = (
-				AAADAB0228EDB17B0055DA73 /* Conspects.swift */,
+				AACCF1AD28F2DE68003735BF /* iOS+Syllabus.pdf */,
+				AAADAB0228EDB17B0055DA73 /* Conspect17VC.swift */,
+				AACCF1AF28F2DE85003735BF /* Conspect18VC.swift */,
 			);
 			path = Conspects;
 			sourceTree = "<group>";
@@ -177,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAADAAF628EDAE290055DA73 /* LaunchScreen.storyboard in Resources */,
+				AACCF1AE28F2DE68003735BF /* iOS+Syllabus.pdf in Resources */,
 				AAADAAF328EDAE290055DA73 /* Assets.xcassets in Resources */,
 				AAADAAF128EDAE280055DA73 /* Main.storyboard in Resources */,
 			);
@@ -210,10 +217,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAADAB0328EDB17B0055DA73 /* Conspects.swift in Sources */,
+				AAADAB0328EDB17B0055DA73 /* Conspect17VC.swift in Sources */,
 				AAADAB0B28EDB3EA0055DA73 /* SearchViewController.swift in Sources */,
 				AAADAB0728EDB3B70055DA73 /* BuyViewController.swift in Sources */,
 				AAADAB0928EDB3D30055DA73 /* ForYouViewController.swift in Sources */,
+				AACCF1B028F2DE85003735BF /* Conspect18VC.swift in Sources */,
 				AAADAB0528EDB2920055DA73 /* MainTabBarController.swift in Sources */,
 				AAADAAEA28EDAE280055DA73 /* AppDelegate.swift in Sources */,
 				AAFE7CEE28EEECAF00704603 /* ProductViewController.swift in Sources */,
