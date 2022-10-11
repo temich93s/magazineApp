@@ -28,7 +28,8 @@ final class ForYouViewController: UIViewController {
         setupUI()
     }
     
-    @IBOutlet weak var deliveryProduct: UIView!
+    @IBOutlet weak var deliveryProductView: UIView!
+    @IBOutlet weak var personPhotoImageView: UIImageView!
     
     // MARK: - Private Methods
     
@@ -36,11 +37,13 @@ final class ForYouViewController: UIViewController {
         navigationController?.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: Constant.HexColor3478F7)
         navigationController?.tabBarController?.tabBar.backgroundColor = UIColor(named: Constant.HexColorF8F8F8)
         
-        deliveryProduct.layer.cornerRadius = 20
-        deliveryProduct.layer.shadowColor = UIColor.black.cgColor
-        deliveryProduct.layer.shadowOpacity = 0.5
-        deliveryProduct.layer.shadowOffset = CGSize.zero
-        deliveryProduct.layer.shadowRadius = 5
+        deliveryProductView.layer.cornerRadius = 20
+        deliveryProductView.layer.shadowColor = UIColor.black.cgColor
+        deliveryProductView.layer.shadowOpacity = 0.5
+        deliveryProductView.layer.shadowOffset = CGSize.zero
+        deliveryProductView.layer.shadowRadius = 5
+        
+        personPhotoImageView.layer.cornerRadius = personPhotoImageView.frame.height / 2
         
     }
 
