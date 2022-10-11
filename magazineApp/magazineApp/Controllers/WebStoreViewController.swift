@@ -17,7 +17,7 @@ class WebStoreViewController: UIViewController, WKUIDelegate {
         static let imageCharacterBookClosedImage = "character.book.closed"
         static let pricePDF = "App-Store-Price"
         static let textPrice = "Price"
-        static let HexColorF8F8F8 = "HexColorF8F8F8"
+        static let hexColorF8F8F8 = "HexColorF8F8F8"
     }
     
     // MARK: - Private Visual Properties
@@ -73,7 +73,7 @@ class WebStoreViewController: UIViewController, WKUIDelegate {
     }
 
     private func setupWebStoreVC() {
-        view.backgroundColor = UIColor(named: Constant.HexColorF8F8F8)
+        view.backgroundColor = UIColor(named: Constant.hexColorF8F8F8)
     }
     
     private func setupToolBar() {

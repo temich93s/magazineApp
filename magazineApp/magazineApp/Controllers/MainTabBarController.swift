@@ -23,7 +23,7 @@ final class MainTabBarController: UITabBarController {
         static let wordBasket = "Корзина"
         static let wordMain = "Main"
         static let wordForYouVC = "ForYouVC"
-        static let HexColor121212 = "HexColor121212"
+        static let hexColor121212 = "HexColor121212"
     }
     
     // MARK: - Lifecycle
@@ -59,7 +59,7 @@ final class MainTabBarController: UITabBarController {
         let navigationControllerBasket = UINavigationController(rootViewController: basketViewController)
         
         tabBar.unselectedItemTintColor = .gray
-        tabBar.backgroundColor = UIColor(named: Constant.HexColor121212)
+        tabBar.backgroundColor = UIColor(named: Constant.hexColor121212)
         
         viewControllers = [
             navigationControllerBuy,

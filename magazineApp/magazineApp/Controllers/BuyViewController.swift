@@ -13,8 +13,8 @@ final class BuyViewController: UIViewController {
     // MARK: - Constants
     
     private enum Constant {
-        static let HexColor9D9DA1 = "HexColor9D9DA1"
-        static let HexColor121212 = "HexColor121212"
+        static let hexColor9D9DA1 = "HexColor9D9DA1"
+        static let hexColor121212 = "HexColor121212"
     }
     
     // MARK: - Lifecycle
@@ -31,8 +31,8 @@ final class BuyViewController: UIViewController {
     // MARK: - Private Methods
     
     func setupUI() {
-        navigationController?.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: Constant.HexColor9D9DA1)
-        navigationController?.tabBarController?.tabBar.backgroundColor = UIColor(named: Constant.HexColor121212)
+        navigationController?.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: Constant.hexColor9D9DA1)
+        navigationController?.tabBarController?.tabBar.backgroundColor = UIColor(named: Constant.hexColor121212)
     }
 
 }

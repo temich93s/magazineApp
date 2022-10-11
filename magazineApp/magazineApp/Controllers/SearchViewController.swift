@@ -49,8 +49,8 @@ final class SearchViewController: UIViewController {
         static let wordBeats = "  Beats"
         static let wordCompareModelIphone = "  Сравните модели iphone"
         static let colorBackgroundView = "HexColor1C1C1E"
-        static let HexColor9D9DA1 = "HexColor9D9DA1"
-        static let HexColor121212 = "HexColor121212"
+        static let hexColor9D9DA1 = "HexColor9D9DA1"
+        static let hexColor121212 = "HexColor121212"
     }
     
     // MARK: - Private Visual Components
@@ -177,8 +177,8 @@ final class SearchViewController: UIViewController {
     }
     
     private func setupTabBar() {
-        navigationController?.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: Constant.HexColor9D9DA1)
-        navigationController?.tabBarController?.tabBar.backgroundColor = UIColor(named: Constant.HexColor121212)
+        navigationController?.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: Constant.hexColor9D9DA1)
+        navigationController?.tabBarController?.tabBar.backgroundColor = UIColor(named: Constant.hexColor121212)
     }
     
     private func setupProductsScrollView(products: [(productText: String,
