@@ -26,17 +26,21 @@ final class SearchViewController: UIViewController {
         static let imageMagnifyingGlass = "magnifyingglass"
         static let placeholderForSearch = "Поиск по продуктам и магазинам"
         static let descriptionCaseBlack = "Чехол Incase Flat для MacBook Pro 16 дюймов"
+        static let urlCaseBlack = "https://www.apple.com/shop/product/HPFG2ZM/A/"
         static let imageCaseBlackFirst = "CaseBlack1"
         static let imageCaseBlackSecond = "CaseBlack2"
         static let imageCaseBlackThird = "CaseBlack3"
         static let descriptionBlackUnity = "Спортивный ремешок Black Unity"
+        static let urlBlackUnity = "https://www.apple.com/shop/product/MPH93AM/A"
         static let imageBlackUnityFirst = "BlackUnity1"
         static let imageBlackUnitySecond = "BlackUnity2"
         static let descriptionCaseBrown = "Кожанный чехол Brown для MacBook Pro 16 дюймов"
+        static let urlCaseBrown = "https://www.apple.com/shop/product/HQ2P2ZM/A/"
         static let imageIPhone12First = "IPhone121"
         static let imageIPhone12Second = "IPhone122"
         static let imageIPhone12Third = "IPhone123"
         static let descriptionIPhone12 = "IPhone 12 Pro"
+        static let urlIPhone12 = "https://www.apple.com/shop/buy-iphone/iphone-12"
         static let imageCaseBrownFirst = "CaseBrown1"
         static let imageCaseBrownSecond = "CaseBrown2"
         static let imageCaseBrownThird = "CaseBrown3"
@@ -45,6 +49,8 @@ final class SearchViewController: UIViewController {
         static let wordBeats = "  Beats"
         static let wordCompareModelIphone = "  Сравните модели iphone"
         static let colorBackgroundView = "HexColor1C1C1E"
+        static let hexColor9D9DA1 = "HexColor9D9DA1"
+        static let hexColor121212 = "HexColor121212"
     }
     
     // MARK: - Private Visual Components
@@ -104,13 +110,17 @@ final class SearchViewController: UIViewController {
     
     private let products = [
         (productText: Constant.descriptionCaseBlack,
-         productImage: [Constant.imageCaseBlackFirst, Constant.imageCaseBlackSecond, Constant.imageCaseBlackThird]),
+         productImage: [Constant.imageCaseBlackFirst, Constant.imageCaseBlackSecond, Constant.imageCaseBlackThird],
+         productURL: Constant.urlCaseBlack),
         (productText: Constant.descriptionBlackUnity,
-         productImage: [Constant.imageBlackUnityFirst, Constant.imageBlackUnitySecond]),
+         productImage: [Constant.imageBlackUnityFirst, Constant.imageBlackUnitySecond],
+         productURL: Constant.urlBlackUnity),
         (productText: Constant.descriptionCaseBrown,
-         productImage: [Constant.imageCaseBrownFirst, Constant.imageCaseBrownSecond, Constant.imageCaseBrownThird]),
+         productImage: [Constant.imageCaseBrownFirst, Constant.imageCaseBrownSecond, Constant.imageCaseBrownThird],
+         productURL: Constant.urlCaseBrown),
         (productText: Constant.descriptionIPhone12,
-         productImage: [Constant.imageIPhone12First, Constant.imageIPhone12Second, Constant.imageIPhone12Third])
+         productImage: [Constant.imageIPhone12First, Constant.imageIPhone12Second, Constant.imageIPhone12Third],
+         productURL: Constant.urlIPhone12)
     ]
     
     private let lastQueries = [
@@ -128,9 +138,13 @@ final class SearchViewController: UIViewController {
         setupDelegate()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     // MARK: - Private Methods
     
-    @objc private func goToProductViewController(sender: UITapGestureRecognizer) {
+    @objc private func goToProductViewControllerAction(sender: UITapGestureRecognizer) {
         guard
             let tag = sender.view?.tag,
             tag < products.count
@@ -138,6 +152,7 @@ final class SearchViewController: UIViewController {
         let productViewController = ProductViewController()
         productViewController.productText = products[tag].productText
         productViewController.imagesProduct = products[tag].productImage
+        productViewController.productURL = products[tag].productURL
         navigationController?.pushViewController(productViewController, animated: true)
     }
     
@@ -160,7 +175,9 @@ final class SearchViewController: UIViewController {
         title = Constant.wordSearch
     }
     
-    private func setupProductsScrollView(products: [(productText: String, productImage: [String])]) {
+    private func setupProductsScrollView(products: [(productText: String,
+                                                     productImage: [String],
+                                                     productURL: String)]) {
         for indexProduct in 0..<products.count {
             guard let firstProductImage = products[indexProduct].productImage.first else { return }
             let productView = createProductView(
@@ -254,7 +271,7 @@ final class SearchViewController: UIViewController {
             $0.tag = index
             $0.addGestureRecognizer(UITapGestureRecognizer(
                 target: self,
-                action: #selector(goToProductViewController)
+                action: #selector(goToProductViewControllerAction)
             ))
             $0.isUserInteractionEnabled = true
             return $0
@@ -334,6 +351,7 @@ final class SearchViewController: UIViewController {
 }
 
 // MARK: - UITextFieldDelegate
+
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.resignFirstResponder()

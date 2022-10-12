@@ -31,10 +31,12 @@ final class ProductViewController: UIViewController {
         static let lightProductViewColor = "HexColor9D9DA1"
         static let darkProductViewColor = "HexColor3F3D40"
         static let checkmarkCircleColor = "HexColor2FD15C"
+        static let HexColor121212 = "HexColor121212"
     }
     
     // MARK: - Public Properties
     
+    var productURL = ""
     var productText = ""
     var imagesProduct: [String] = []
     
@@ -61,7 +63,15 @@ final class ProductViewController: UIViewController {
         setupUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     // MARK: - Private Methods
+    
+    private func setupView() {
+        view.backgroundColor = .black
+    }
     
     private func setupBarButtonItem() {
         navigationItem.setRightBarButtonItems(
@@ -71,10 +81,6 @@ final class ProductViewController: UIViewController {
                              style: .plain, target: nil, action: nil)],
             animated: true
         )
-    }
-    
-    private func setupView() {
-        view.backgroundColor = .black
     }
     
     private func setupNameProductView() {
@@ -194,6 +200,12 @@ final class ProductViewController: UIViewController {
         setupShippingBoxImageView()
     }
     
+    @objc private func goWebStoreViewControllerAction(sender: UITapGestureRecognizer) {
+        let webStoreViewController = WebStoreViewController()
+        webStoreViewController.productURL = productURL
+        navigationController?.pushViewController(webStoreViewController, animated: true)
+    }
+    
     // MARK: - Private Visual Methods
     
     private func createNameProductView(
@@ -237,6 +249,11 @@ final class ProductViewController: UIViewController {
         let scrollView = UIScrollView()
         for indexImage in 0..<images.count {
             let imageProductView = createImageProductView(productImage: imagesProduct[indexImage], index: indexImage)
+            imageProductView.addGestureRecognizer(UITapGestureRecognizer(
+                target: self,
+                action: #selector(goWebStoreViewControllerAction)
+            ))
+            imageProductView.isUserInteractionEnabled = true
             scrollView.addSubview(imageProductView)
         }
         scrollView.contentSize = CGSize(width: view.bounds.width * CGFloat(images.count), height: height)

@@ -21,6 +21,9 @@ final class MainTabBarController: UITabBarController {
         static let wordForYou = "Для вас"
         static let wordSearch = "Поиск"
         static let wordBasket = "Корзина"
+        static let wordMain = "Main"
+        static let wordForYouVC = "ForYouVC"
+        static let hexColor121212 = "HexColor121212"
     }
     
     // MARK: - Lifecycle
@@ -54,8 +57,8 @@ final class MainTabBarController: UITabBarController {
         let navigationControllerSearch = UINavigationController(rootViewController: searchViewController)
         let navigationControllerBasket = UINavigationController(rootViewController: basketViewController)
         
-        tabBar.unselectedItemTintColor = .gray
-        tabBar.backgroundColor = UIColor(named: "HexColor121212")
+        tabBarController?.overrideUserInterfaceStyle = .dark
+        overrideUserInterfaceStyle = .dark
         
         viewControllers = [
             navigationControllerBuy,
