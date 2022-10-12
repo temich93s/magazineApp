@@ -40,8 +40,7 @@ final class MainTabBarController: UITabBarController {
         buyViewController.tabBarItem.title = Constant.wordBuy
         buyViewController.tabBarItem.image = UIImage(systemName: Constant.imageLaptopComputerAndIphone)
         
-        let storyboard = UIStoryboard.init(name: Constant.wordMain, bundle: Bundle.main)
-        let forYouViewController = storyboard.instantiateViewController(identifier: Constant.wordForYouVC)
+        let forYouViewController = ForYouViewController()
         forYouViewController.tabBarItem.title = Constant.wordForYou
         forYouViewController.tabBarItem.image = UIImage(systemName: Constant.imagePersonCircle)
         
