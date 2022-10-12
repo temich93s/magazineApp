@@ -65,16 +65,9 @@ final class ProductViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupTabBar()
     }
     
     // MARK: - Private Methods
-    
-    private func setupTabBar() {
-        navigationController?.tabBarController?.tabBar.unselectedItemTintColor = UIColor(
-            named: Constant.lightProductViewColor)
-        navigationController?.tabBarController?.tabBar.backgroundColor = UIColor(named: Constant.HexColor121212)
-    }
     
     private func setupView() {
         view.backgroundColor = .black
@@ -207,7 +200,7 @@ final class ProductViewController: UIViewController {
         setupShippingBoxImageView()
     }
     
-    @objc private func goWebStoreViewController(sender: UITapGestureRecognizer) {
+    @objc private func goWebStoreViewControllerAction(sender: UITapGestureRecognizer) {
         let webStoreViewController = WebStoreViewController()
         webStoreViewController.productURL = productURL
         navigationController?.pushViewController(webStoreViewController, animated: true)
@@ -258,7 +251,7 @@ final class ProductViewController: UIViewController {
             let imageProductView = createImageProductView(productImage: imagesProduct[indexImage], index: indexImage)
             imageProductView.addGestureRecognizer(UITapGestureRecognizer(
                 target: self,
-                action: #selector(goWebStoreViewController)
+                action: #selector(goWebStoreViewControllerAction)
             ))
             imageProductView.isUserInteractionEnabled = true
             scrollView.addSubview(imageProductView)

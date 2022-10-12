@@ -17,6 +17,7 @@ final class ForYouViewController: UIViewController {
         static let hexColorF8F8F8 = "HexColorF8F8F8"
         static let hexColor1C1C1E = "HexColor1C1C1E"
         static let keyForPersonPhoto = "PersonPhoto"
+        static let imagePickerControllerEditedImage = "UIImagePickerControllerEditedImage"
         static let shadowRadius: CGFloat = 5
         static let shadowOpacity: Float = 0.5
         static let cornerRadius: CGFloat = 20
@@ -35,10 +36,15 @@ final class ForYouViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupTabBar()
         setupDeliveryProductView()
         setupPersonPhotoImageView()
         loadImage()
+        changeModeToLight()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        changeModeToDark()
     }
     
     // MARK: - Private Visual Methods
@@ -55,11 +61,6 @@ final class ForYouViewController: UIViewController {
         deliveryProductView.layer.shadowOpacity = Constant.shadowOpacity
         deliveryProductView.layer.shadowOffset = CGSize.zero
         deliveryProductView.layer.shadowRadius = Constant.shadowRadius
-    }
-    
-    private func setupTabBar() {
-        navigationController?.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: Constant.hexColor9D9DA1)
-        navigationController?.tabBarController?.tabBar.backgroundColor = UIColor(named: Constant.hexColorF8F8F8)
     }
     
     // MARK: - Private Action
@@ -94,6 +95,16 @@ final class ForYouViewController: UIViewController {
         }
     }
     
+    private func changeModeToLight() {
+        tabBarController?.overrideUserInterfaceStyle = .light
+        overrideUserInterfaceStyle = .light
+    }
+    
+    private func changeModeToDark() {
+        tabBarController?.overrideUserInterfaceStyle = .dark
+        overrideUserInterfaceStyle = .dark
+    }
+    
 }
 
 // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
@@ -105,7 +116,7 @@ extension ForYouViewController: UIImagePickerControllerDelegate, UINavigationCon
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
     ) {
         guard let image = info[UIImagePickerController.InfoKey(
-            rawValue: "UIImagePickerControllerEditedImage")] as? UIImage else { return }
+            rawValue: Constant.imagePickerControllerEditedImage)] as? UIImage else { return }
         personPhotoImageView.image = image
         saveImage()
         picker.dismiss(animated: true, completion: nil)

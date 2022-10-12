@@ -25,14 +25,6 @@ final class BuyViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupUI()
-    }
-    
-    // MARK: - Private Methods
-    
-    func setupUI() {
-        navigationController?.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: Constant.hexColor9D9DA1)
-        navigationController?.tabBarController?.tabBar.backgroundColor = UIColor(named: Constant.hexColor121212)
     }
 
 }

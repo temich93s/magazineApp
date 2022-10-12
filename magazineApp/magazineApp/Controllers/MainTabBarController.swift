@@ -58,8 +58,8 @@ final class MainTabBarController: UITabBarController {
         let navigationControllerSearch = UINavigationController(rootViewController: searchViewController)
         let navigationControllerBasket = UINavigationController(rootViewController: basketViewController)
         
-        tabBar.unselectedItemTintColor = .gray
-        tabBar.backgroundColor = UIColor(named: Constant.hexColor121212)
+        tabBarController?.overrideUserInterfaceStyle = .dark
+        overrideUserInterfaceStyle = .dark
         
         viewControllers = [
             navigationControllerBuy,

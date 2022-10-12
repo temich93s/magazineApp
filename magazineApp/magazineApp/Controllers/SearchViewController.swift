@@ -140,12 +140,11 @@ final class SearchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupTabBar()
     }
     
     // MARK: - Private Methods
     
-    @objc private func goToProductViewController(sender: UITapGestureRecognizer) {
+    @objc private func goToProductViewControllerAction(sender: UITapGestureRecognizer) {
         guard
             let tag = sender.view?.tag,
             tag < products.count
@@ -174,11 +173,6 @@ final class SearchViewController: UIViewController {
             createLastQueryView(lastQueryText: lastQueries[indexLastQuery], index: indexLastQuery)
         }
         title = Constant.wordSearch
-    }
-    
-    private func setupTabBar() {
-        navigationController?.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: Constant.hexColor9D9DA1)
-        navigationController?.tabBarController?.tabBar.backgroundColor = UIColor(named: Constant.hexColor121212)
     }
     
     private func setupProductsScrollView(products: [(productText: String,
@@ -277,7 +271,7 @@ final class SearchViewController: UIViewController {
             $0.tag = index
             $0.addGestureRecognizer(UITapGestureRecognizer(
                 target: self,
-                action: #selector(goToProductViewController)
+                action: #selector(goToProductViewControllerAction)
             ))
             $0.isUserInteractionEnabled = true
             return $0
