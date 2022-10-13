@@ -30,15 +30,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-//        loadStatusLaunch()
-//        if isNotFirstLaunchBool {
-//            window?.rootViewController = MainTabBarController()
-//        } else {
-//            isNotFirstLaunchBool = true
-//            saveStatusLaunch()
-//            window?.rootViewController = MainPageViewController()
-//        }
-        window?.rootViewController = MainPageViewController()
+        loadStatusLaunch()
+        if isNotFirstLaunchBool {
+            window?.rootViewController = MainTabBarController()
+        } else {
+            isNotFirstLaunchBool = true
+            saveStatusLaunch()
+            window?.rootViewController = MainPageViewController()
+        }
     }
     
     // MARK: - Private Methods

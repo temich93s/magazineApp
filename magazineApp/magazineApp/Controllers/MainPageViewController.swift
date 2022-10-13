@@ -7,8 +7,8 @@
 
 import UIKit
 
-/// экран приветствие
-class MainPageViewController: UIPageViewController {
+/// экран приветствия
+final class MainPageViewController: UIPageViewController {
     
     // MARK: - Constants
 
@@ -28,7 +28,6 @@ class MainPageViewController: UIPageViewController {
             "Vestibulum rutrum quam vitae fringilla tincidunt."
         static let TimesNewRomanBold = "TimesNewRomanPS-BoldMT"
         static let TimesNewRoman = "TimesNewRomanPSMT"
-        
     }
     
     // MARK: - Private Visual Properties
@@ -54,10 +53,9 @@ class MainPageViewController: UIPageViewController {
     }()
     
     private lazy var getStartedButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: view.frame.maxY - 70, width: 150, height: 40))
+        let button = UIButton(frame: CGRect(x: 0, y: view.frame.maxY - 100, width: 150, height: 40))
         button.center.x = view.center.x
         button.setTitle(Constant.getStartedText, for: .normal)
-        button.backgroundColor = .orange
         button.setTitleColor(.systemBlue, for: .normal)
         button.isHidden = true
         button.addTarget(self, action: #selector(goToMainTabBarAction), for: .touchUpInside)
@@ -97,23 +95,6 @@ class MainPageViewController: UIPageViewController {
         return welcomeViewControllers.firstIndex(of: vc) ?? 0
     }
     
-    // MARK: - Private Action
-    
-    @objc func goToNextPageAction() {
-        if currentIndex < 2 {
-            setViewControllers([welcomeViewControllers[currentIndex + 1]], direction: .forward, animated: true)
-        }
-//        // точку исправить
-//        print(currentIndex)
-//        proxy.currentPage = currentIndex
-    }
-    
-    @objc func goToMainTabBarAction() {
-        let mainTabBarController = MainTabBarController()
-        mainTabBarController.modalPresentationStyle = .fullScreen
-        present(mainTabBarController, animated: true, completion: nil)
-    }
-    
     // MARK: - init
     
     override init(
@@ -132,26 +113,25 @@ class MainPageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.addSubview(nextButton)
-        view.addSubview(skipButton)
-        view.addSubview(getStartedButton)
-        view.addSubview(mainMessage)
-        view.addSubview(secondaryMessage)
-        
-        self.dataSource = self
-        self.delegate = self
-        
-        proxy.pageIndicatorTintColor = .lightGray
-        proxy.currentPageIndicatorTintColor = .systemBlue
-        proxy.backgroundColor = .white
-        // proxy.isHidden = true
-        
-        view.backgroundColor = .white
-        setViewControllers([welcomeViewControllers[0]], direction: .forward, animated: true)
+        setupMainPageVC()
+    }
+    
+    // MARK: - Private Action
+    
+    @objc func goToNextPageAction() {
+        if currentIndex < 2 {
+            setViewControllers([welcomeViewControllers[currentIndex + 1]], direction: .forward, animated: true)
+        }
+    }
+    
+    @objc func goToMainTabBarAction() {
+        let mainTabBarController = MainTabBarController()
+        mainTabBarController.modalPresentationStyle = .fullScreen
+        present(mainTabBarController, animated: true, completion: nil)
     }
     
     // MARK: - Private Methods
+    
     private func doAnimation() {
         mainMessage.alpha = 0
         secondaryMessage.alpha = 0
@@ -159,6 +139,21 @@ class MainPageViewController: UIPageViewController {
             self.mainMessage.alpha = 1
             self.secondaryMessage.alpha = 1
         })
+    }
+    
+    private func setupMainPageVC() {
+        view.addSubview(nextButton)
+        view.addSubview(skipButton)
+        view.addSubview(getStartedButton)
+        view.addSubview(mainMessage)
+        view.addSubview(secondaryMessage)
+        self.dataSource = self
+        self.delegate = self
+        proxy.pageIndicatorTintColor = .lightGray
+        proxy.currentPageIndicatorTintColor = .systemBlue
+        proxy.backgroundColor = .white
+        view.backgroundColor = .white
+        setViewControllers([welcomeViewControllers[0]], direction: .forward, animated: true)
     }
 }
 
@@ -194,7 +189,7 @@ extension MainPageViewController: UIPageViewControllerDataSource, UIPageViewCont
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return welcomeViewControllers.count
     }
-    
+
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
     }
@@ -207,6 +202,7 @@ extension MainPageViewController: UIPageViewControllerDataSource, UIPageViewCont
         else {
             return
         }
+        doAnimation()
         proxy = UIPageControl.appearance()
         switch index {
         case 0, 1:
@@ -217,11 +213,9 @@ extension MainPageViewController: UIPageViewControllerDataSource, UIPageViewCont
             if index == 0 {
                 mainMessage.text = Constant.mainTextForStartVC
                 secondaryMessage.text = Constant.secondaryTextForStartVC
-                doAnimation()
             } else {
                 mainMessage.text = Constant.mainTextForMidleVC
                 secondaryMessage.text = Constant.secondaryTextForMidleVC
-                doAnimation()
             }
         case 2:
             nextButton.isHidden = true
@@ -230,7 +224,6 @@ extension MainPageViewController: UIPageViewControllerDataSource, UIPageViewCont
             getStartedButton.isHidden = false
             mainMessage.text = Constant.mainTextForFinishVC
             secondaryMessage.text = Constant.secondaryTextForFinishVC
-            doAnimation()
         default:
             break
         }
