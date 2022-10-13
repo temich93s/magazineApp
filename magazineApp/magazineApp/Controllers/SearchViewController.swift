@@ -173,6 +173,7 @@ final class SearchViewController: UIViewController {
             createLastQueryView(lastQueryText: lastQueries[indexLastQuery], index: indexLastQuery)
         }
         title = Constant.wordSearch
+        view.backgroundColor = .black
     }
     
     private func setupProductsScrollView(products: [(productText: String,

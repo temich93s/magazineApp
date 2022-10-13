@@ -21,10 +21,11 @@ final class BuyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    func setupUI() {
+        view.backgroundColor = .black
     }
 
 }

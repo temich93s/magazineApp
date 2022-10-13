@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA40FDB328F7120B0053A7E3 /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA40FDB228F7120B0053A7E3 /* FinishViewController.swift */; };
-		AA40FDB528F712100053A7E3 /* MiddleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA40FDB428F712100053A7E3 /* MiddleViewController.swift */; };
-		AA40FDB728F712150053A7E3 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA40FDB628F712150053A7E3 /* StartViewController.swift */; };
+		AA40FDB528F712100053A7E3 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA40FDB428F712100053A7E3 /* OnboardViewController.swift */; };
 		AA40FDB928F7121C0053A7E3 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA40FDB828F7121C0053A7E3 /* MainPageViewController.swift */; };
 		AA40FDBB28F712450053A7E3 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA40FDBA28F712450053A7E3 /* MyViewController.swift */; };
 		AA40FDBD28F7124A0053A7E3 /* CarsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA40FDBC28F7124A0053A7E3 /* CarsHelper.swift */; };
@@ -34,9 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA40FDB228F7120B0053A7E3 /* FinishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
-		AA40FDB428F712100053A7E3 /* MiddleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleViewController.swift; sourceTree = "<group>"; };
-		AA40FDB628F712150053A7E3 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		AA40FDB428F712100053A7E3 /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		AA40FDB828F7121C0053A7E3 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		AA40FDBA28F712450053A7E3 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		AA40FDBC28F7124A0053A7E3 /* CarsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarsHelper.swift; sourceTree = "<group>"; };
@@ -154,9 +150,7 @@
 				AAFE7CED28EEECAF00704603 /* ProductViewController.swift */,
 				AA45295728F463ED008F0C09 /* WebStoreViewController.swift */,
 				AA40FDB828F7121C0053A7E3 /* MainPageViewController.swift */,
-				AA40FDB628F712150053A7E3 /* StartViewController.swift */,
-				AA40FDB428F712100053A7E3 /* MiddleViewController.swift */,
-				AA40FDB228F7120B0053A7E3 /* FinishViewController.swift */,
+				AA40FDB428F712100053A7E3 /* OnboardViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,13 +251,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAADAB0328EDB17B0055DA73 /* Conspect17VC.swift in Sources */,
-				AA40FDB728F712150053A7E3 /* StartViewController.swift in Sources */,
 				AA45295528F463AE008F0C09 /* Conspect19VC.swift in Sources */,
 				AAADAB0B28EDB3EA0055DA73 /* SearchViewController.swift in Sources */,
 				AA40FDBB28F712450053A7E3 /* MyViewController.swift in Sources */,
-				AA40FDB328F7120B0053A7E3 /* FinishViewController.swift in Sources */,
 				AA45295628F463AE008F0C09 /* Conspect20VC.swift in Sources */,
-				AA40FDB528F712100053A7E3 /* MiddleViewController.swift in Sources */,
+				AA40FDB528F712100053A7E3 /* OnboardViewController.swift in Sources */,
 				AAADAB0728EDB3B70055DA73 /* BuyViewController.swift in Sources */,
 				AA45295828F463ED008F0C09 /* WebStoreViewController.swift in Sources */,
 				AAADAB0928EDB3D30055DA73 /* ForYouViewController.swift in Sources */,
