@@ -24,6 +24,8 @@ final class BasketViewController: UIViewController {
         setupUI()
     }
     
+    // MARK: - Private Methods
+    
     func setupUI() {
         view.backgroundColor = .black
     }

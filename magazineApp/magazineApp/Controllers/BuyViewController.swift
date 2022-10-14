@@ -24,6 +24,8 @@ final class BuyViewController: UIViewController {
         setupUI()
     }
     
+    // MARK: - Private Methods
+    
     func setupUI() {
         view.backgroundColor = .black
     }

@@ -126,7 +126,7 @@ final class MainPageViewController: UIPageViewController {
     
     // MARK: - Private Action
     
-    @objc func goToNextPageAction() {
+    @objc private func goToNextPageAction() {
         guard currentIndex < 2 else { return }
         setViewControllers([welcomeViewControllers[currentIndex + 1]], direction: .forward, animated: true)
         mainPageControl.currentPage += 1
@@ -140,7 +140,7 @@ final class MainPageViewController: UIPageViewController {
         mainPageControl.isHidden = true
     }
     
-    @objc func goToMainTabBarAction() {
+    @objc private func goToMainTabBarAction() {
         let mainTabBarController = MainTabBarController()
         mainTabBarController.modalPresentationStyle = .fullScreen
         present(mainTabBarController, animated: true, completion: nil)
@@ -164,10 +164,11 @@ final class MainPageViewController: UIPageViewController {
         view.addSubview(getStartedButton)
         view.addSubview(mainMessage)
         view.addSubview(secondaryMessage)
-        self.dataSource = self
-        self.delegate = self
+        dataSource = self
+        delegate = self
         view.backgroundColor = .white
-        setViewControllers([welcomeViewControllers[0]], direction: .forward, animated: true)
+        guard let firstVC = welcomeViewControllers.first else { return }
+        setViewControllers([firstVC], direction: .forward, animated: true)
     }
     
 }
@@ -211,7 +212,7 @@ extension MainPageViewController: UIPageViewControllerDataSource, UIPageViewCont
     func pageViewController(_ pageViewController: UIPageViewController,
                             willTransitionTo pendingViewControllers: [UIViewController]) {
         guard
-            let vc = pendingViewControllers[0] as? OnboardViewController,
+            let vc = pendingViewControllers.first as? OnboardViewController,
             let index = welcomeViewControllers.firstIndex(of: vc)
         else {
             return
