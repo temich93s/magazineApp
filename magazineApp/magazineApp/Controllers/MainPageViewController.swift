@@ -53,7 +53,7 @@ final class MainPageViewController: UIPageViewController {
     }()
     
     private lazy var getStartedButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: view.frame.maxY - 100, width: 150, height: 40))
+        let button = UIButton(frame: CGRect(x: 0, y: view.frame.maxY - 70, width: 150, height: 40))
         button.center.x = view.center.x
         button.setTitle(Constant.getStartedText, for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
@@ -82,7 +82,15 @@ final class MainPageViewController: UIPageViewController {
         return label
     }()
     
-    var proxy = UIPageControl.appearance()
+    private lazy var mainPageControl: UIPageControl = {
+        let pageControl = UIPageControl(frame: CGRect(x: 0, y: view.frame.maxY - 70, width: 200, height: 40))
+        pageControl.center.x = view.center.x
+        pageControl.currentPageIndicatorTintColor = .systemBlue
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.numberOfPages = welcomeViewControllers.count
+        pageControl.currentPage = 0
+        return pageControl
+    }()
     
     // MARK: - Private Properties
     
@@ -119,9 +127,17 @@ final class MainPageViewController: UIPageViewController {
     // MARK: - Private Action
     
     @objc func goToNextPageAction() {
-        if currentIndex < 2 {
-            setViewControllers([welcomeViewControllers[currentIndex + 1]], direction: .forward, animated: true)
-        }
+        guard currentIndex < 2 else { return }
+        setViewControllers([welcomeViewControllers[currentIndex + 1]], direction: .forward, animated: true)
+        mainPageControl.currentPage += 1
+        doAnimation()
+        guard currentIndex == 2 else { return }
+        nextButton.isHidden = true
+        skipButton.isHidden = true
+        getStartedButton.isHidden = false
+        mainMessage.text = Constant.mainTextForFinishVC
+        secondaryMessage.text = Constant.secondaryTextForFinishVC
+        mainPageControl.isHidden = true
     }
     
     @objc func goToMainTabBarAction() {
@@ -142,6 +158,7 @@ final class MainPageViewController: UIPageViewController {
     }
     
     private func setupMainPageVC() {
+        view.addSubview(mainPageControl)
         view.addSubview(nextButton)
         view.addSubview(skipButton)
         view.addSubview(getStartedButton)
@@ -149,12 +166,10 @@ final class MainPageViewController: UIPageViewController {
         view.addSubview(secondaryMessage)
         self.dataSource = self
         self.delegate = self
-        proxy.pageIndicatorTintColor = .lightGray
-        proxy.currentPageIndicatorTintColor = .systemBlue
-        proxy.backgroundColor = .white
         view.backgroundColor = .white
         setViewControllers([welcomeViewControllers[0]], direction: .forward, animated: true)
     }
+    
 }
 
 // MARK: - UIPageViewControllerDataSource, UIPageViewControllerDelegate
@@ -164,34 +179,33 @@ extension MainPageViewController: UIPageViewControllerDataSource, UIPageViewCont
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
     ) -> UIViewController? {
-        guard let vc = viewController as? OnboardViewController else { return nil }
-        if let index = welcomeViewControllers.firstIndex(of: vc) {
-            if index > 0 {
-                return welcomeViewControllers[index - 1]
-            }
+        guard
+            let vc = viewController as? OnboardViewController,
+            let index = welcomeViewControllers.firstIndex(of: vc),
+            index > 0
+        else {
+            return nil
         }
-        return nil
+        return welcomeViewControllers[index - 1]
     }
     
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerAfter viewController: UIViewController
     ) -> UIViewController? {
-        guard let vc = viewController as? OnboardViewController else { return nil }
-        if let index = welcomeViewControllers.firstIndex(of: vc) {
-            if index < welcomeViewControllers.count - 1 {
-                return welcomeViewControllers[index + 1]
-            }
+        guard
+            let vc = viewController as? OnboardViewController,
+            let index = welcomeViewControllers.firstIndex(of: vc),
+            index < welcomeViewControllers.count - 1
+        else {
+            return nil
         }
-        return nil
+        return welcomeViewControllers[index + 1]
+        
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return welcomeViewControllers.count
-    }
-
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return 0
     }
     
     func pageViewController(_ pageViewController: UIPageViewController,
@@ -202,28 +216,28 @@ extension MainPageViewController: UIPageViewControllerDataSource, UIPageViewCont
         else {
             return
         }
+        mainPageControl.currentPage = index
         doAnimation()
-        proxy = UIPageControl.appearance()
         switch index {
         case 0, 1:
             nextButton.isHidden = false
             skipButton.isHidden = false
-            proxy.isHidden = false
             getStartedButton.isHidden = true
-            if index == 0 {
-                mainMessage.text = Constant.mainTextForStartVC
-                secondaryMessage.text = Constant.secondaryTextForStartVC
-            } else {
+            mainPageControl.isHidden = false
+            guard index == 0 else {
                 mainMessage.text = Constant.mainTextForMidleVC
                 secondaryMessage.text = Constant.secondaryTextForMidleVC
+                return
             }
+            mainMessage.text = Constant.mainTextForStartVC
+            secondaryMessage.text = Constant.secondaryTextForStartVC
         case 2:
             nextButton.isHidden = true
             skipButton.isHidden = true
-            proxy.isHidden = true
             getStartedButton.isHidden = false
             mainMessage.text = Constant.mainTextForFinishVC
             secondaryMessage.text = Constant.secondaryTextForFinishVC
+            mainPageControl.isHidden = true
         default:
             break
         }
