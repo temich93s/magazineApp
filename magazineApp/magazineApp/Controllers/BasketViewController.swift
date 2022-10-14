@@ -21,10 +21,13 @@ final class BasketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    // MARK: - Private Methods
+    
+    func setupUI() {
+        view.backgroundColor = .black
     }
 
 }
